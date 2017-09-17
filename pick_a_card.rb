@@ -9,10 +9,10 @@ if File.exist?(current_path + "/data/suits.txt")
   file = f.readlines
   f.close
   file.delete_at(0) # удаляю первый элемент в массиве, т.к. он пустой
-  puts "#{values.sample}#{file.sample}"
+  puts "#{values.sample}#{file.sample}" # Выведем произвольную карты, выбрав по одному элементу из массивов
 else
   puts "Файл не найден"
 
 end
 
-# Выведем произвольную карты, выбрав по одному элементу из массивов
+
