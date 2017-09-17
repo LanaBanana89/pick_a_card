@@ -8,11 +8,11 @@ if File.exist?(current_path + "/data/suits.txt")
   f = File.new(current_path + "/data/suits.txt","r:UTF-8")
   file = f.readlines
   f.close
-
+  file.delete_at(0) # удаляю первый элемент в массиве, т.к. он пустой
+  puts "#{values.sample}#{file.sample}"
 else
   puts "Файл не найден"
 
 end
 
 # Выведем произвольную карты, выбрав по одному элементу из массивов
-puts "#{values.sample}#{file.sample}"
