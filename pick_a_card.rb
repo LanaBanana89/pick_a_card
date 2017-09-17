@@ -1,18 +1,19 @@
-current_path = File.dirname(__FILE__)
+# Программа, которая выбирает произвольную карту игральной колоды
+
+if (Gem.win_platform?)
+  Encoding.default_external = Encoding.find(Encoding.locale_charmap)
+  Encoding.default_internal = __ENCODING__
+
+  [STDIN, STDOUT].each do |io|
+    io.set_encoding(Encoding.default_external, Encoding.default_internal)
+  end
+end
 
 # Массивы с наборами мастей и достоинств
 values = ['2','3','4','5','6','7','8','9','10','J','Q','K','A']
-#suits = ['Diamonds', 'Hearts', 'Clubs', 'Spades'] # Буби, Черви, Крести, Пики
+suits = ['♦','♠','♥ ','♣']
 
-if File.exist?(current_path + "/data/suits.txt")
-  f = File.new(current_path + "/data/suits.txt","r:UTF-8")
-  file = f.readlines
-  f.close
-  file.delete_at(0) # удаляю первый элемент в массиве, т.к. он пустой
-  puts "#{values.sample}#{file.sample}" # Выведем произвольную карты, выбрав по одному элементу из массивов
-else
-  puts "Файл не найден"
-
-end
+# Выведем произвольную карты, выбрав по одному элементу из массивов
+puts "#{values.sample}#{suits.sample}"
 
 
