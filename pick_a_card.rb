@@ -1,29 +1,21 @@
-# Программа, которая выбирает произвольную карту игральной колоды
+# encoding: utf-8
+
+# Подключаем класс колоды
+require_relative 'lib/deck'
+
+# Выводим приветствие
 puts 'Pick a Card. (c) goodprogrammer.ru'
+puts
 
-# Массивы с наборами мастей и достоинств
-values = ['2','3','4','5','6','7','8','9','10','J','Q','K','A']
-suits = ['♦','♠','♥ ','♣']
+# Создаем новую колоду и сразу её перемешиваем
+deck = Deck.new.shuffle
 
-cards = []
-
-values.each do |value|
-  suits.each do |suit|
-    cards << "#{value}#{suit[0].downcase}" #7c
-  end
-end
-
-2.times do
-  cards << '[Joker]'
-end
-
-cards.shuffle!
-
-puts "How many cards do you pick?"
+# Спрашиваем у пользователя, сколько ему надо карт
+puts 'How many cards do you pick?'
 number = STDIN.gets.to_i
 
+# Нужное число раз выкидываем из колоды последню карту
+puts
 number.times do
-  puts cards.pop
+  puts deck.pop_a_card
 end
-
-
